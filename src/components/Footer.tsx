@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
-function Head(): React.JSX.Element {
+function Footer(): React.JSX.Element {
     return (
         <View style={styles.footer}>
             <TouchableOpacity>
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Head;
+export default Footer;

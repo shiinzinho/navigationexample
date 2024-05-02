@@ -1,13 +1,57 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import {FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Head from "../components/Head";
+
+interface Produto {
+    id: number;
+    nome: string;
+    ingredientes: string;
+    preco: string;
+    imagem: string;
+};
 
 function PesquisaProduto(): React.JSX.Element {
+    const produtos: Produto[] = [
+        {
+            id: 1,
+            nome: 'HotDog',
+            ingredientes: 'Pão, Batata, Purê...',
+            preco: '10.99',
+            imagem: require('../assets/images/hamburger.png')
+        },
+        {
+            id: 2,
+            nome: 'HotDog Especial',
+            ingredientes: 'Pão, Batata, Purê...',
+            preco: '29.99',
+            imagem: require('../assets/images/hamburger.png')
+        }
+    ];
+    const renderItem = ({ item }: { item: Produto }) => {
+        return (
+            <TouchableOpacity>
+                <Image source={require('../assets/images/hamburger.png')}/>
+                    <View>
+                        <Text>{item.nome}</Text>
+                        <Text>{item.ingredientes}</Text>
+                        <Text>{item.preco}</Text>
+                    </View>
+            </TouchableOpacity>
+        );
+    }
     return (
         <View>
-
+            <StatusBar backgroundColor="red" barStyle="light-content"/>
+            <Head />
+            <FlatList
+            data={produtos}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id? item.id.toString() : Math.random().toString()}
+            contentContainerStyle={styles.menuList}    
+            />
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
