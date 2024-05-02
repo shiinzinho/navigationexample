@@ -1,6 +1,7 @@
 import React from "react";
 import {FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Head from "../components/Head";
+import Footer from "../components/Footer";
 
 interface Produto {
     id: number;
@@ -29,18 +30,18 @@ function PesquisaProduto(): React.JSX.Element {
     ];
     const renderItem = ({ item }: { item: Produto }) => {
         return (
-            <TouchableOpacity>
-                <Image source={require('../assets/images/hamburger.png')}/>
-                    <View>
-                        <Text>{item.nome}</Text>
-                        <Text>{item.ingredientes}</Text>
-                        <Text>{item.preco}</Text>
+            <TouchableOpacity style={styles.menuItem}>
+                <Image source={require('../assets/images/hamburger.png')} style={styles.image}/>
+                    <View style={styles.itemDetails}>
+                        <Text style={styles.name}>{item.nome}</Text>
+                        <Text style={styles.description}>{item.ingredientes}</Text>
+                        <Text style={styles.price}>{item.preco}</Text>
                     </View>
             </TouchableOpacity>
         );
     }
     return (
-        <View>
+        <View style={styles.container}>
             <StatusBar backgroundColor="red" barStyle="light-content"/>
             <Head />
             <FlatList
@@ -49,6 +50,7 @@ function PesquisaProduto(): React.JSX.Element {
             keyExtractor={(item) => item.id? item.id.toString() : Math.random().toString()}
             contentContainerStyle={styles.menuList}    
             />
+            <Footer/>
         </View>
     );
 };

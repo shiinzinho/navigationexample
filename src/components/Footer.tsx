@@ -8,7 +8,7 @@ function Footer(): React.JSX.Element {
                 <Image source={require('../assets/images/home.png')} style={styles.FooterIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Image source={require('../assets/images/lupa.png')} style={styles.FooterIcon}/>
+                <Image source={require('../assets/images/lupe.png')} style={styles.FooterIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>
                 <Image source={require('../assets/images/orders.png')} style={styles.FooterIcon}/>
